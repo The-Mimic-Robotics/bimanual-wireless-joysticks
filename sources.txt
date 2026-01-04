@@ -1,0 +1,5 @@
+https://www.waveshare.com/st3215-servo.htm
+https://github.com/ufnalski/pixy2_dice_roller_h503rb
+https://github.com/Tanuja-getvectorbots/Waveshare-ST3215-Servo-motor-controlling-with-esp32
+https://forum.arduino.cc/t/control-servo-st3215-with-esp32-wroom-32d/1393738
+https://www.waveshare.com/wiki/ST3215_Servo
