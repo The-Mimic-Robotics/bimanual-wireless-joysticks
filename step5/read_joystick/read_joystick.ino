@@ -2,6 +2,11 @@ const uint8_t XPOS_PIN = 33;
 const uint8_t YPOS_PIN = 25;
 const uint8_t PUSH_PIN = 26;
 
+int mapJoystick(int value)
+{
+  return map(value, 0, 4095, -32767, 32767);
+}
+
 void setup()
 {
   pinMode(XPOS_PIN, INPUT);
@@ -14,13 +19,13 @@ void setup()
 void loop()
 {
   Serial.print("X: ");
-  Serial.print(analogRead(XPOS_PIN));
+  Serial.print(mapJoystick(analogRead(XPOS_PIN)));
 
   Serial.print(", Y: ");
-  Serial.print(analogRead(YPOS_PIN));
+  Serial.print(mapJoystick(analogRead(YPOS_PIN)));
 
   Serial.print(", and PUSH: ");
   Serial.println(digitalRead(PUSH_PIN));
 
-  delay(500);
+  delay(10);
 }
