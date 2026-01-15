@@ -29,9 +29,8 @@ const unsigned long TIMEOUT_MS = 2000;
 
 TaskHandle_t Task0;
 
-void OnDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingDataPtr, int len)
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingDataPtr, int len)
 {
-  const uint8_t* mac = info->src_addr;
   memcpy(&incomingData, incomingDataPtr, sizeof(incomingData));
 
   if (incomingData.id == 1)
@@ -60,7 +59,7 @@ void espNowTask(void * pvParameters)
     vTaskDelete(NULL);
   }
 
-  esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
+  esp_now_register_recv_cb(OnDataRecv);
 
   while (1)
   {
