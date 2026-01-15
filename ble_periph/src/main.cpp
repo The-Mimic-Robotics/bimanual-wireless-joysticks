@@ -2,7 +2,7 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-#define BOARD_ID 1
+const int BOARD_ID = 2;
 #define LED_PIN 8
 
 const uint8_t XPOS_PIN = 3;
@@ -60,8 +60,8 @@ void setup() {
 
 void loop() {
   myData.id = BOARD_ID;
-  myData.x = map(analogRead(XPOS_PIN), 0, 4095, -32767, 32767);
-  myData.y = map(analogRead(YPOS_PIN), 0, 4095, -32767, 32767);
+  myData.x = map(analogRead(XPOS_PIN), 0, 4095, 0, 32767);
+  myData.y = map(analogRead(YPOS_PIN), 0, 4095, 0, 32767);
   //myData.y = map(analogRead(YPOS_PIN), 0, 4095, 32767, -32767); for right hand micro-controller
   myData.push = digitalRead(PUSH_PIN);
 
