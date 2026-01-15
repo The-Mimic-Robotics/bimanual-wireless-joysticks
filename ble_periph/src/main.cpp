@@ -6,7 +6,7 @@
 #define LED_PIN 8
 
 const uint8_t XPOS_PIN = 3;
-const uint8_t YPOS_PIN = 2;
+const uint8_t YPOS_PIN = 0;
 const uint8_t PUSH_PIN = 1;
 
 typedef struct struct_message
@@ -60,8 +60,9 @@ void setup() {
 
 void loop() {
   myData.id = BOARD_ID;
-  myData.x = analogRead(XPOS_PIN);
-  myData.y = analogRead(YPOS_PIN);
+  myData.x = map(analogRead(XPOS_PIN), 0, 4095, -32767, 32767);
+  myData.y = map(analogRead(YPOS_PIN), 0, 4095, -32767, 32767);
+  //myData.y = map(analogRead(YPOS_PIN), 0, 4095, 32767, -32767); for right hand micro-controller
   myData.push = digitalRead(PUSH_PIN);
 
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));

@@ -116,17 +116,5 @@ void loop() {
     bleGamepad.sendReport();
   }
 
-  //Serial.print(map(msgX1, 0, 4095, -32767, 32767));
-  Serial.print(msgX1);
-  Serial.print(",");
-  //Serial.print(map(msgY1, 0, 4095, -32767, 32767));
-  Serial.print(msgY1);
-  Serial.print(",");
-  //Serial.print(map(msgX2, 0, 4095, -32767, 32767));
-  Serial.print(msgX2);
-  Serial.print(",");
-  //Serial.println(map(msgY2, 0, 4095, -32767, 32767));
-  Serial.println(msgY2);
-
   delay(20);
 }
