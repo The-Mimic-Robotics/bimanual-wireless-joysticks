@@ -1,9 +1,14 @@
 #include <Arduino.h>
 #include <esp_now.h>
-#include <WiFi.h>
+#include <WiFi.h> 
 
+const int LED_PIN = 8;
+
+// right hand
+//const int BOARD_ID = 1;
+
+// left hand
 const int BOARD_ID = 2;
-#define LED_PIN 8
 
 const uint8_t XPOS_PIN = 3;
 const uint8_t YPOS_PIN = 0;
@@ -60,9 +65,25 @@ void setup() {
 
 void loop() {
   myData.id = BOARD_ID;
-  myData.x = map(analogRead(XPOS_PIN), 0, 4095, 0, 32767);
-  myData.y = map(analogRead(YPOS_PIN), 0, 4095, 0, 32767);
-  //myData.y = map(analogRead(YPOS_PIN), 0, 4095, 32767, -32767); for right hand micro-controller
+
+  //////////////////////////////////////////////////////////////////
+  
+  // right hand
+  //myData.x = map(analogRead(XPOS_PIN), 0, 4095, 0, 32767);
+
+  // left hand
+  myData.x = map(analogRead(XPOS_PIN), 0, 4095, 32767, 0);
+
+  //////////////////////////////////////////////////////////////////
+
+  // right hand
+  //myData.y = map(analogRead(YPOS_PIN), 0, 4095, 0, 32767);
+
+  // left hand
+  myData.y = map(analogRead(YPOS_PIN), 0, 4095, 32767, 0);
+
+  //////////////////////////////////////////////////////////////////
+
   myData.push = digitalRead(PUSH_PIN);
 
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
