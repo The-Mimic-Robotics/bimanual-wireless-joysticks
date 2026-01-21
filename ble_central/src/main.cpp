@@ -6,8 +6,6 @@
 #include <BleGamepad.h>
 #include <BleGamepadConfiguration.h>
 
-const int LED_PIN = 2;
-
 BleGamepad bleGamepad("ESP32 Dual Stick", "Maker", 100);
 
 typedef struct struct_message
@@ -69,10 +67,10 @@ void espNowTask(void * pvParameters)
 
     if (connected1 && connected2)
     {
-      digitalWrite(LED_PIN, 1);
+      digitalWrite(2, 1); //LED_PIN
     } else
     {
-      digitalWrite(LED_PIN, 0);
+      digitalWrite(2, 0); //LED_PIN
     }
 
     vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -82,8 +80,8 @@ void espNowTask(void * pvParameters)
 void setup() {
   Serial.begin(115200);
 
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, 0);
+  pinMode(2, OUTPUT); //LED_PIN
+  digitalWrite(2, 0); //LED_PIN
 
   xTaskCreatePinnedToCore(
     espNowTask,   // task function
@@ -92,17 +90,18 @@ void setup() {
     NULL,         // parameter of the task
     1,            // priority of the task
     &Task0,       // task handle
-    0             // execute on core 0
+    0             // execute on core 0, loop() always runs on Core 1
   );
 
   BleGamepadConfiguration bleGamepadConfig;
   bleGamepadConfig.setAutoReport(false);
   bleGamepadConfig.setControllerType(CONTROLLER_TYPE_GAMEPAD);
   bleGamepad.begin(&bleGamepadConfig);
+
+  while (msgB1 == 1 || msgB2 == 1); // safeguard: might need to put this in loop() if not work
 }
 
 void loop() {
-  //xPortGetCoreID() will return 1 as the loop() always runs on Core 1
   if (bleGamepad.isConnected())
   {
     bleGamepad.setAxes(msgX1, msgY1, msgX2, msgY2, 0, 0, 0, 0);
