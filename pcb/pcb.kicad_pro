@@ -476,11 +476,31 @@
       },
       {
         "clearance": 0.25,
-        "name": "Power",
+        "name": "Data",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgb(76, 183, 255)",
+        "track_width": 0.25,
+        "wire_width": 10
+      },
+      {
+        "clearance": 0.25,
+        "name": "GND",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5
+        "schematic_color": "rgb(0, 0, 0)",
+        "track_width": 0.5,
+        "wire_width": 20
+      },
+      {
+        "clearance": 0.25,
+        "line_style": 0,
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgb(255, 0, 0)",
+        "track_width": 0.5,
+        "wire_width": 20
       }
     ],
     "meta": {
@@ -490,8 +510,32 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
+        "netclass": "GND",
+        "pattern": "GND"
+      },
+      {
         "netclass": "Power",
-        "pattern": "/5V /GND"
+        "pattern": "/5V0"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "/7V4"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "/3V3"
+      },
+      {
+        "netclass": "Data",
+        "pattern": "/RX"
+      },
+      {
+        "netclass": "Data",
+        "pattern": "/RY"
+      },
+      {
+        "netclass": "Data",
+        "pattern": "/SW"
       }
     ]
   },
@@ -500,7 +544,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "drill/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",

@@ -1262,7 +1262,7 @@
 				(pin power_in line
 					(at -7.62 0 0)
 					(length 2.54)
-					(name "7V4"
+					(name "IN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1298,7 +1298,7 @@
 				(pin power_out line
 					(at 7.62 0 180)
 					(length 2.54)
-					(name "5V"
+					(name "OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1505,6 +1505,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 97.79) (xy 148.59 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ad6a48a-0857-4613-8d2f-953573a44e2a")
+	)
+	(wire
+		(pts
 			(xy 115.57 67.31) (xy 147.32 67.31)
 		)
 		(stroke
@@ -1552,16 +1562,6 @@
 			(type default)
 		)
 		(uuid "9118c1ca-b4d6-4bd3-8102-7fc70776589d")
-	)
-	(wire
-		(pts
-			(xy 148.59 97.79) (xy 134.62 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "96993f33-89f6-491d-ba85-1390b1e5285b")
 	)
 	(wire
 		(pts
@@ -1663,6 +1663,88 @@
 		)
 		(uuid "ea1a3548-eb22-4507-9dd5-1c4924d10fb6")
 	)
+	(label "7V4"
+		(at 92.71 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "03b9f6c2-0699-43a9-a37d-86c40f0c25ee")
+	)
+	(label "RX"
+		(at 140.97 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c49a951-d04e-4eff-a285-316658bcce60")
+	)
+	(label "SW"
+		(at 140.97 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5e9c040b-630c-4800-842d-c2c67d19b773")
+	)
+	(label "3V3"
+		(at 146.05 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "95acea86-060a-4360-9241-42b5149ec21f")
+	)
+	(label "RY"
+		(at 140.97 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "be6e193a-0e92-41ba-8f84-93de88be1bde")
+	)
+	(label "5V0"
+		(at 147.32 67.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f75be4b4-c313-4d0f-bab6-0e24fb36e76b")
+	)
+	(global_label "GND"
+		(shape input)
+		(at 91.44 85.09 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0698e836-a99e-4e2c-8bdf-85701021113c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 84.5843 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 97.79 78.74 0)
@@ -1673,7 +1755,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "01400ccb-8a8d-456d-b451-bed861f4b6f5")
-		(property "Reference" "input_c_pol1"
+		(property "Reference" "input_c1"
 			(at 101.6 76.5809 0)
 			(effects
 				(font
@@ -1727,7 +1809,7 @@
 		(instances
 			(project ""
 				(path "/cf52163e-048c-48d9-89ec-e5d76936dc02"
-					(reference "input_c_pol1")
+					(reference "input_c1")
 					(unit 1)
 				)
 			)
@@ -1743,21 +1825,21 @@
 		(dnp no)
 		(uuid "11a0857f-16aa-4b33-bf59-6ba7a97675ae")
 		(property "Reference" "left_ESP32-C1"
-			(at 134.62 90.1699 0)
+			(at 124.714 83.82 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "Conn_01x08"
-			(at 134.62 92.7099 0)
+			(at 122.174 83.82 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical"
@@ -1900,7 +1982,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "513dac16-8a40-4e81-b115-f65e939e497f")
-		(property "Reference" "output_c_pol1"
+		(property "Reference" "output_c1"
 			(at 119.38 76.5809 0)
 			(effects
 				(font
@@ -1918,7 +2000,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D4.0mm_P2.00mm"
 			(at 116.5352 82.55 0)
 			(effects
 				(font
@@ -1954,7 +2036,7 @@
 		(instances
 			(project "pcb"
 				(path "/cf52163e-048c-48d9-89ec-e5d76936dc02"
-					(reference "output_c_pol1")
+					(reference "output_c1")
 					(unit 1)
 				)
 			)
