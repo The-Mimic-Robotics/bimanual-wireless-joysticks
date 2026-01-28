@@ -1,3 +1,6 @@
-archive:
-  zip:
-    zip -r misc_pcb.zip drill/ -x drill/pcb-job.gbrjob
+zip:
+  zip -9 -r misc_pcb.zip drill/ -x drill/pcb-job.gbrjob
+
+archive: zip
+
+default: archive

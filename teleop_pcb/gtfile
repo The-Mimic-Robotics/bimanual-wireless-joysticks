@@ -1,0 +1,6 @@
+zip:
+  zip -9 -r teleop_pcb.zip *.gbr *.drl
+
+archive: zip
+
+default: archive
