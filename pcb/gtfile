@@ -1,5 +1,5 @@
 zip:
-  zip -9 -r misc_pcb.zip drill/ -x drill/pcb-job.gbrjob
+  zip -9 -r build/capstone_pcb.zip drill/ gerber/ -x gerber/*.gbrjob
 
 archive: zip
 

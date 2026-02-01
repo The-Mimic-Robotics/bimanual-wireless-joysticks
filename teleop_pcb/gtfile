@@ -1,5 +1,5 @@
 zip:
-  zip -9 -r teleop_pcb.zip *.gbr *.drl
+  zip -9 -r build/teleop_pcb.zip drill/ gerber/ -x gerber/*.gbrjob
 
 archive: zip
 

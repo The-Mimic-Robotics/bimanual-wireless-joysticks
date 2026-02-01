@@ -476,27 +476,40 @@
       },
       {
         "clearance": 0.2,
+        "line_style": 0,
         "name": "DATA",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgb(71, 255, 253)",
         "track_width": 0.25,
-        "wire_width": 10
+        "wire_width": 14
       },
       {
         "clearance": 0.2,
+        "line_style": 0,
+        "name": "FREE",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(120, 255, 112)",
+        "track_width": 0.25,
+        "wire_width": 14
+      },
+      {
+        "clearance": 0.2,
+        "line_style": 0,
         "name": "GND",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgb(0, 0, 0)",
         "track_width": 0.5,
         "wire_width": 20
       },
       {
         "clearance": 0.2,
+        "line_style": 0,
         "name": "PWR",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
+        "priority": 3,
         "schematic_color": "rgb(255, 0, 0)",
         "track_width": 0.5,
         "wire_width": 20
@@ -537,12 +550,16 @@
         "pattern": "/RY"
       },
       {
-        "netclass": "DATA",
-        "pattern": "/TX_IMU"
+        "netclass": "FREE",
+        "pattern": "/."
       },
       {
         "netclass": "DATA",
-        "pattern": "/RX_IMU"
+        "pattern": "/SDA"
+      },
+      {
+        "netclass": "DATA",
+        "pattern": "/SCL"
       }
     ]
   },
@@ -551,10 +568,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "gerber",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "teleop_pcb.step",
       "svg": "",
       "vrml": ""
     },
