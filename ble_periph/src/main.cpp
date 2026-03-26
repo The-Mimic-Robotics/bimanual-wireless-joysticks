@@ -2,7 +2,7 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-#define DEADZONE 150
+#define DEADZONE 400
 #define ADC_CENTER 2048
 
 const uint8_t XPOS_PIN = 3;
@@ -70,14 +70,14 @@ void loop() {
   int rawY = applyDeadzone(analogRead(YPOS_PIN));
 
   // right hand
-  myData.id = 1;
-  myData.x = map(rawX, 0, 4095, 32767, 0);
-  myData.y = map(rawY, 0, 4095, 0, 32767);
+  //myData.id = 1;
+  //myData.x = map(rawX, 0, 4095, 32767, 0);
+  //myData.y = map(rawY, 0, 4095, 0, 32767);
  
   // left hand
-  //myData.id = 2;
-  //myData.x = map(rawX, 0, 4095, 32767, 0);
-  //myData.y = map(rawY, 0, 4095, 32767, 0);
+  myData.id = 2;
+  myData.x = map(rawX, 0, 4095, 32767, 0);
+  myData.y = map(rawY, 0, 4095, 32767, 0);
 
   myData.push = digitalRead(PUSH_PIN);
 
