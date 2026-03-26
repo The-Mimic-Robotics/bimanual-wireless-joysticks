@@ -2,6 +2,9 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
+#define DEADZONE 150
+#define ADC_CENTER 2048
+
 const uint8_t XPOS_PIN = 3;
 const uint8_t YPOS_PIN = 0;
 const uint8_t PUSH_PIN = 1;
@@ -55,17 +58,26 @@ void setup() {
   pinMode(PUSH_PIN, INPUT_PULLUP);
 }
 
+int applyDeadzone(int value) {
+  if (abs(value - ADC_CENTER) < DEADZONE) {
+    return ADC_CENTER;
+  }
+  return value;
+}
+
 void loop() {
+  int rawX = applyDeadzone(analogRead(XPOS_PIN));
+  int rawY = applyDeadzone(analogRead(YPOS_PIN));
+
   // right hand
-  /*myData.id = 1;
-  myData.x = map(analogRead(XPOS_PIN), 0, 4095, 0, 32767);
-  myData.y = map(analogRead(YPOS_PIN), 0, 4095, 0, 32767);
-  */
+  myData.id = 1;
+  myData.x = map(rawX, 0, 4095, 32767, 0);
+  myData.y = map(rawY, 0, 4095, 0, 32767);
  
   // left hand
-  myData.id = 2;
-  myData.x = map(analogRead(XPOS_PIN), 0, 4095, 32767, 0);
-  myData.y = map(analogRead(YPOS_PIN), 0, 4095, 32767, 0);
+  //myData.id = 2;
+  //myData.x = map(rawX, 0, 4095, 32767, 0);
+  //myData.y = map(rawY, 0, 4095, 32767, 0);
 
   myData.push = digitalRead(PUSH_PIN);
 
